@@ -117,7 +117,6 @@ function Projects() {
           (
             {
               image = '/projects/default-project.webp',
-              video,
               projectDescription,
               projectLink,
               projectExternalLinks,
@@ -128,8 +127,8 @@ function Projects() {
             },
             index
           ) => {
-            const hasVideo =
-              video && (projectName === 'QueryLens' || projectName === 'KubeWise');
+            const hasVideo = false;
+
             const isEven = index % 2 === 1;
 
             return (
@@ -157,11 +156,6 @@ function Projects() {
                     <div className="project-image-container">
                       {hasVideo ? (
                         <iframe
-                          src={video}
-                          title={projectName}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="project-video"
                         ></iframe>
                       ) : (
                         <Image
