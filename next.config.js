@@ -130,6 +130,7 @@ const nextConfig = {
 
   // Increase build output details
   output: 'export',
+  homepage: "https://yuvrajscheema.github.io",
 
   // Disable powered by header
   poweredByHeader: false,
