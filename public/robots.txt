@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lohit.is-a.dev/sitemap.xml 
+Sitemap: https://yuvrajscheema.github.io/sitemap.xml 

@@ -43,19 +43,6 @@ const nextConfig = {
   // Configure webpack for better performance
   webpack: (config, { dev, isServer }) => {
     // Add file loader for image files
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|svg|webp)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'static/images/',
-            publicPath: '/_next/static/images/'
-          }
-        }
-      ]
-    });
     
     // Optimize production builds
     if (!dev) {
@@ -130,7 +117,6 @@ const nextConfig = {
 
   // Increase build output details
   output: 'export',
-  homepage: "https://yuvrajscheema.github.io",
 
   // Disable powered by header
   poweredByHeader: false,
