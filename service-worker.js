@@ -2,7 +2,6 @@ const CACHE_NAME = 'portfolio-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/favicon.svg',
   '/projects/project1.webp',
   '/projects/project2.webp',
   '/projects/project3.webp',
