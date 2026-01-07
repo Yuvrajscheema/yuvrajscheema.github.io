@@ -1,15 +1,15 @@
 {
-  "homepage": "https://yuvrajscheema.github.io/",
+  "homepage": "https://yuvrajscheema.github.io",
   "name": "portfolio",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "build": "next build && touch out/.nojekyll",
+    "deploy": "gh-pages -d out --dotfiles -b main"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

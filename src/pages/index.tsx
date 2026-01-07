@@ -129,24 +129,10 @@ function Index() {
   return (
     <div className="app">
       <Head>
-        <title>Lohit&apos;s Portfolio</title>
-        <meta name="description" content="Lohit Kolluri - DevOps & Cloud Solutions Engineer specializing in cloud-native technologies, containerization, and CI/CD pipelines" />
-        <link rel="canonical" href="https://lohit.is-a.dev" />
+        <title>Yuvraj&apos;s Portfolio</title>
+        <meta name="description" content="Yuvraj Cheema - Engineering Physics student specializing in control systems and embedded systems" />
+        <link rel="canonical" href="https://yuvrajscheema.github.io" />
         
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Lohit Kolluri - DevOps & Cloud Engineer" />
-        <meta property="og:description" content="Portfolio of Lohit Kolluri, a DevOps & Cloud Solutions Engineer specializing in AWS, Azure, Docker, Kubernetes, and full-stack development" />
-        <meta property="og:url" content="https://lohit.is-a.dev" />
-        <meta property="og:image" content="https://lohit.is-a.dev/favicon.svg" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Lohit Kolluri - DevOps & Cloud Engineer" />
-        <meta name="twitter:description" content="Portfolio of Lohit Kolluri, a DevOps & Cloud Solutions Engineer specializing in AWS, Azure, Docker, Kubernetes, and full-stack development" />
-        <meta name="twitter:image" content="https://lohit.is-a.dev/favicon.svg" />
-        
-        <link rel="shortcut icon" href="/favicon.svg" />
         <meta
           name="google-site-verification"
           content="DgzOS3oNMuUQ4Y1sU7x860SgyvsYvnd1BCWQLFu0KT8"
@@ -159,24 +145,22 @@ function Index() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Person',
-              name: 'Lohit Kolluri',
-              url: 'https://lohit.is-a.dev',
-              jobTitle: 'DevOps & Cloud Solutions Engineer',
+              name: 'Yuvraj Cheema',
+              url: 'https://yuvrajscheema.github.io',
+              jobTitle: 'Control Systems and Embedded Systems Engineer',
               worksFor: {
                 '@type': 'Organization',
                 name: 'Self-employed',
               },
               sameAs: [
-                'https://linkedin.com/in/kollurilohit',
-                'https://github.com/lohitkolluri',
+                'https://linkedin.com/in/yuvrajscheema',
+                'https://github.com/yuvrajscheema',
               ],
               knowsAbout: [
                 'AWS',
-                'Azure',
                 'Docker',
-                'Kubernetes',
-                'CI/CD',
-                'Cloud-Native Technologies',
+                'Cpp',
+                'Low level programming'
               ],
             }),
           }}

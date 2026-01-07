@@ -9,136 +9,138 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 
+// Import the Mosaic Loader component (adjust path as needed)
+import MosaicLoader from '@/components/Loader';
+
+// Fonts
 const raleway = Raleway({ subsets: ['latin'] });
 const firaCode = Fira_Code({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] });
 
-// Use 'any' type for the dynamic import to avoid type mismatches
-const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
-  ssr: false,
-});
+// Animated cursor (disabled on mobile)
+const AnimatedCursor = dynamic(() => import('react-animated-cursor'), { ssr: false });
+
+// Mosaic Loader Wrapper
+const Loader = () => (
+  <div className="loader-wrapper">
+    <MosaicLoader size={80} color="#bb86fc" gap={4} />
+  </div>
+);
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [mounted, setMounted] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  // Handle mount, window resizing, and router events
   useEffect(() => {
+    console.log('App mounted');
     setMounted(true);
 
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    // Initial check
+    // Check if mobile
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
-
-    // Add resize listener
     window.addEventListener('resize', checkMobile);
 
-    // Add smooth scrolling behavior
+    // Smooth scroll
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Register service worker
-    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').then(
-          (registration) => {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          },
-          (err) => {
-            console.log('ServiceWorker registration failed: ', err);
-          }
-        );
-      });
-    }
+    // Handle loading state
+    const handleRouteChangeStart = () => {
+      console.log('Route change started:', router.asPath);
+      setLoading(true);
+    };
+    const handleRouteChangeComplete = () => {
+      console.log('Route change complete, isReady:', router.isReady);
+      if (router.isReady) {
+        setLoading(false);
+      }
+    };
+    const handleRouteChangeError = () => {
+      console.log('Route change error');
+      setLoading(false);
+    };
 
-    // Clean up
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+    // Fallback timeout to ensure loader displays for ~1s
+    const timeout = setTimeout(() => {
+      console.log('Fallback timeout triggered, hiding loader');
+      setLoading(false);
+    }, 1000); // 1000ms to match 1s SCSS animation
 
-  // Fix for hydration mismatch
-  if (!mounted) {
-    return null;
-  }
+    // Listen for router events
+    router.events.on('routeChangeStart', handleRouteChangeStart);
+    router.events.on('routeChangeComplete', handleRouteChangeComplete);
+    router.events.on('routeChangeError', handleRouteChangeError);
+
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('resize', checkMobile);
+      router.events.off('routeChangeStart', handleRouteChangeStart);
+      router.events.off('routeChangeComplete', handleRouteChangeComplete);
+      router.events.off('routeChangeError', handleRouteChangeError);
+    };
+  }, [router]);
+
+  // Log when Component mounts
+  useEffect(() => {
+    console.log('Page component mounted:', Component.displayName || Component.name || 'Unknown');
+  }, [Component]);
+
+  // Don’t render until mounted (avoids hydration mismatch)
+  if (!mounted) return null;
 
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+
       <style jsx global>{`
         :root {
           --raleway: ${raleway.style.fontFamily};
           --fira-code: ${firaCode.style.fontFamily};
         }
-
-        html {
-          scroll-padding-top: 80px; /* Ensures anchor links don't get hidden behind fixed header */
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        body {
-          animation: fadeIn 0.8s ease-in;
-        }
       `}</style>
-      
-      <AppProvider>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={router.route}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Component {...pageProps} />
-          </motion.div>
-        </AnimatePresence>
-        
-        {!isMobile && mounted && (
-          <AnimatedCursor
-            innerSize={8}
-            outerSize={35}
-            color="187, 134, 252"
-            outerAlpha={0.2}
-            innerScale={1}
-            outerScale={1.7}
-            trailingSpeed={5}
-            showSystemCursor={false}
-            outerStyle={{
-              mixBlendMode: 'difference',
-            }}
-            clickables={[
-              'a',
-              'input[type="text"]',
-              'input[type="email"]',
-              'input[type="number"]',
-              'input[type="submit"]',
-              'input[type="image"]',
-              'label[for]',
-              'select',
-              'textarea',
-              'button',
-              '.link',
-              '.exp-slider-item',
-              '.hover-this',
-              '.timeline-item',
-              '.experience-item',
-              '.md-btn',
-            ]}
-          />
-        )}
-      </AppProvider>
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <AppProvider>
+          <AnimatePresence mode="sync">
+            <motion.div
+              key={router.route}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.1 }}
+            >
+              <Component {...pageProps} />
+            </motion.div>
+          </AnimatePresence>
+
+          {!isMobile && (
+            <AnimatedCursor
+              innerSize={8}
+              outerSize={35}
+              color="187, 134, 252"
+              outerAlpha={0.2}
+              innerScale={1}
+              outerScale={1.7}
+              trailingSpeed={5}
+              showSystemCursor={false}
+              outerStyle={{ mixBlendMode: 'difference' }}
+              clickables={[
+                'a',
+                'button',
+                'input',
+                '.link',
+                '.hover-this',
+                '.timeline-item',
+                '.md-btn',
+              ]}
+            />
+          )}
+        </AppProvider>
+      )}
     </>
   );
 };

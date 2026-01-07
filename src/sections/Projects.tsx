@@ -18,7 +18,6 @@ function Projects() {
     {
       image: '/projects/robot.webp',
       projectName: 'Untitled Spacecraft',
-      projectLink: '/projects/untitled-spacecraft',
       projectDescription:
         'A robot built from scratch over the span of six weeks to compete in the UBC ENPH robot summer composing of 15 Engineering Physics student teams to compete in a robot competition',
       projectTech: ['KiCad', 'C++', 'Rust', 'Onshape', '3D printing'],
@@ -31,36 +30,20 @@ function Projects() {
       accolades:
         'Achieved first place in the anual UBC ENPH robot summer competition',
     },
-    // {
-    //   video: 'https://www.youtube.com/embed/_zZ1Ndt5diU',
-    //   projectName: 'QueryLens',
-    //   projectLink: 'https://trynlp2sql.streamlit.app/',
-    //   projectDescription:
-    //     'QueryLens converts natural language to SQL queries, streamlining database interactions through intuitive processing.',
-    //   projectTech: ['Streamlit', 'Azure OpenAI', 'SQLite3', 'Altair'],
-    //   projectExternalLinks: {
-    //     github: 'https://github.com/lohitkolluri/NLP2SQL',
-    //     externalLink: 'https://trynlp2sql.streamlit.app/',
-    //   },
-    //   featured: true,
-    //   timeframe: '2024',
-    //   accolades:
-    //     '2nd Runner Up at SEED Global Education Hackathon among 700+ teams',
-    // },
-    // {
-    //   image: '/projects/project2.webp',
-    //   projectName: 'FlaskPost',
-    //   projectLink: 'https://flask-post.vercel.app/',
-    //   projectDescription:
-    //     'A FastAPI-powered mass email platform featuring SMTP configuration, CSV recipient management, and HTML template customization with live preview functionality.',
-    //   projectTech: ['FastAPI', 'REST API', 'Jinja2', 'Fast Mail'],
-    //   projectExternalLinks: {
-    //     github: 'https://github.com/lohitkolluri/FlaskPost',
-    //     externalLink: 'https://github.com/lohitkolluri/FlaskPost',
-    //   },
-    //   featured: false,
-    //   timeframe: '2024',
-    // },
+    {
+      image: '/projects/cf2.webp',
+      projectName: 'Ardupilot Crazyflie',
+      projectDescription:
+        'A modification to the Crazyflie porting the Ardupilot flight stack utilizing a serial bridge between the flight controller and an ESP32 allowing a more stable flight and access to a large community of open source packages to be used for research',
+      projectTech: ['C', 'C++', 'Python', 'UART'],
+      projectExternalLinks: {
+        github: 'https://github.com/Yuvrajscheema/crazyflie-arducopter-setup',
+        externalLink: 'https://github.com/Yuvrajscheema/crazyflie-arducopter-setup/blob/main/guide_to_ardupilot_on_crazyflie.pdf'
+      },
+      featured: true,
+      timeframe: '2025',
+    },
+
   ];
 
   const containerVariants = {
@@ -118,7 +101,6 @@ function Projects() {
             {
               image = '/projects/default-project.webp',
               projectDescription,
-              projectLink,
               projectExternalLinks,
               projectName,
               projectTech,
@@ -133,9 +115,8 @@ function Projects() {
 
             return (
               <motion.div
-                className={`project bg-gradient-to-tr from-purple-600/20 via-indigo-500/10 to-pink-500/20 p-[1px] rounded-xl transition-transform transform hover:scale-[1.02] duration-300 hover:shadow-2xl hover:shadow-indigo-500/30 ${
-                  hoveredProject === projectName ? 'is-hovered' : ''
-                } ${isEven ? 'even-project' : 'odd-project'}`}
+                className={`project bg-gradient-to-tr from-purple-600/20 via-indigo-500/10 to-pink-500/20 p-[1px] rounded-xl transition-transform transform hover:scale-[1.02] duration-300 hover:shadow-2xl hover:shadow-indigo-500/30 ${hoveredProject === projectName ? 'is-hovered' : ''
+                  } ${isEven ? 'even-project' : 'odd-project'}`}
                 key={projectName}
                 variants={itemVariants}
                 onMouseEnter={() => setHoveredProject(projectName)}
@@ -148,9 +129,6 @@ function Projects() {
                 <div className="project-inner bg-[#0f0f0f] rounded-[inherit]">
                   <div
                     className={`project-image ${hasVideo ? 'has-video' : ''}`}
-                    onClick={
-                      hasVideo ? undefined : () => window.open(projectLink, '_blank')
-                    }
                   >
                     <div className="project-image-overlay"></div>
                     <div className="project-image-container">
@@ -188,7 +166,6 @@ function Projects() {
                     <h3 className="project-info-title">
                       <motion.span
                         className="cursor-pointer"
-                        onClick={() => window.open(projectLink, '_blank')}
                         whileHover={{ color: 'var(--theme-color)' }}
                       >
                         {projectName}
@@ -225,7 +202,7 @@ function Projects() {
                     <div className="project-info-links mt-4">
                       <Button3D
                         text="View Project"
-                        link={projectLink}
+                        link={projectExternalLinks.github}
                         color="primary"
                         className="mr-3"
                       />

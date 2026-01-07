@@ -8,7 +8,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'lohitcdn.blob.core.windows.net',
+        hostname: 'yuvrajscheema.github.io',
         port: '',
         pathname: '/**',
       },

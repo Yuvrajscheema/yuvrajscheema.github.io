@@ -11,9 +11,9 @@ interface AboutText {
 const mobileText: AboutText = {
   intro:
     `
-    Im an Engineering Physics student with a deep passion for Control Systems, Energy Systems, and Robotics.
-    I specialize in embedded systems, focusing on building robust and efficient solutions. I'm driven by a fascination with the technology that powers the future,
-    from smart robotics to sustainable energy grids, and I'm committed to bringing these complex ideas to life through innovative design and problem-solving.
+    Im an Engineering Physics student with a passion for Robotics, Control Systems and Embedded Systems. 
+    I enjoy designing robust, real-time systems for time-critical applications, 
+    with an emphasis on reliability, determinism, and performance under real-world constraints.
     `,
   experience:
     `
@@ -27,9 +27,9 @@ const mobileText: AboutText = {
 const desktopText: AboutText = {
   intro:
     `
-    Im an Engineering Physics student with a deep passion for Control Systems, Energy Systems, and Robotics.
-    I specialize in embedded systems, focusing on building robust and efficient solutions. I'm driven by a fascination with the technology that powers the future,
-    from smart robotics to sustainable energy grids, and I'm committed to bringing these complex ideas to life through innovative design and problem-solving.
+    Im an Engineering Physics student with a passion for Robotics, Control Systems and Embedded Systems. 
+    I enjoy designing robust, real-time systems for time-critical applications, 
+    with an emphasis on reliability, determinism, and performance under real-world constraints.
     `,
   experience:
     `
@@ -121,14 +121,6 @@ function About() {
   }, [isVisible, controls]);
 
   // Create a larger array for truly seamless scrolling
-  const generateSkillList = (technologies: Skill[]) => {
-    // Create enough duplicates to ensure continuous scrolling
-    // Triple the items to guarantee smooth looping
-    return [...technologies, ...technologies, ...technologies];
-  };
-
-  const skillsRow1 = generateSkillList(technologiesLine1);
-  const skillsRow2 = generateSkillList(technologiesLine2);
 
   return (
     <motion.div
@@ -152,55 +144,6 @@ function About() {
           </p>
 
           <div className="tech-section" ref={techSectionRef}>
-            <div className="tech-carousel">
-              <div className="tech-container right-to-left">
-                {skillsRow1.map((skill, index) => (
-                  <motion.div
-                    key={`line1-${skill.name}-${index}`}
-                    className="tech-badge"
-                    whileHover={{ y: -5 }}
-                    transition={{ duration: 0.2 }}
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: {
-                        duration: 0.5,
-                        delay: Math.min(index * 0.01, 0.2)
-                      }
-                    }}
-                  >
-                    <div className="tech-icon">
-                      <img src={skill.icon} alt={`${skill.name} icon`} />
-                    </div>
-                    {skill.name}
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="tech-container left-to-right">
-                {skillsRow2.map((skill, index) => (
-                  <motion.div
-                    key={`line2-${skill.name}-${index}`}
-                    className="tech-badge"
-                    whileHover={{ y: -5 }}
-                    transition={{ duration: 0.2 }}
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: {
-                        duration: 0.5,
-                        delay: Math.min(index * 0.01, 0.2)
-                      }
-                    }}
-                  >
-                    <div className="tech-icon">
-                      <img src={skill.icon} alt={`${skill.name} icon`} />
-                    </div>
-                    {skill.name}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
@@ -211,25 +154,25 @@ function About() {
             {!imageError ? (
               <Image
                 src="/etc/profilePicture.jpg"
-                alt="Lohit Kolluri - DevOps & Cloud Solutions Engineer"
+                alt="Yuvraj Cheema - Engineering Physics Student"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
                 style={{ objectFit: 'cover' }}
                 className="rounded-lg"
-                aria-label="Profile picture of Lohit Kolluri"
+                aria-label="Profile picture of Yuvraj Cheema"
                 onError={() => setImageError(true)}
               />
             ) : (
               <Image
                 src="/etc/profilePicture.jpg"
-                alt="Lohit Kolluri - DevOps & Cloud Solutions Engineer"
+                alt="Yuvraj Cheema - Engineering Physics Student"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
                 style={{ objectFit: 'cover' }}
                 className="rounded-lg"
-                aria-label="Profile picture of Lohit Kolluri"
+                aria-label="Profile picture of Yuvraj Cheema"
               />
             )}
           </div>
