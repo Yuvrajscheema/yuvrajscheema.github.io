@@ -160,7 +160,7 @@ const Hero: FC = () => {
           transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.4 }}
         >
           I&apos;m an <span className="highlight">Engineering Physics Student</span> that loves working with
-          <span className="highlight">Control Systems </span>, <span className="highlight">Energy Systems</span>
+          <span className="highlight">Control Systems </span>, <span className="highlight">Embedded Systems</span>
           , and <span className="highlight"> Robotics</span>.
         </motion.p>
         <motion.div
