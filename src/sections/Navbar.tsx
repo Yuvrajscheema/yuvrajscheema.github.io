@@ -146,7 +146,7 @@ function Navbar() {
           >
             <Button
               text="Resume"
-              link="https://drive.google.com/file/d/1wl1uOlw_OBfMUk3MNwi2Ta1sTK--toUj/view?usp=sharing"
+              link="https://codeberg.org/Yuvraj/Resume/src/branch/main/resume.pdf"
               variant="outline"
               size="sm"
               showExternalIcon={true}

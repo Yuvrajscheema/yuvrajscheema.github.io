@@ -30,7 +30,7 @@ function Experience() {
   const experiences = [
     {
       name: 'UOttawa Mechanical Engineering ',
-      role: 'Constrols Reasearch Co-op',
+      role: 'Controls Engineer Reasearch Co-op',
       url: 'https://www.uottawa.ca/faculty-engineering/department-mechanical-engineering',
       start: 'January 2025',
       end: 'May 2025',
