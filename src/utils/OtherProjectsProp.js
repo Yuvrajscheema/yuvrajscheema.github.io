@@ -1,15 +1,15 @@
 const repositories = [
   {
-    id: 2,
-    name: 'ESP32 WifiTuner',
+    id: 1,
+    name: 'Machine Learning Robot',
     description:
-      'A custom made wifi tuner used to remotly tune your PID values for any control system alongside providing an error graph',
-    language: ['HTML', 'JS', 'C++', 'WiFi'],
-    html_url: 'https://github.com/Yuvrajscheema/wifiTuning',
-    homepage: 'https://github.com/Yuvrajscheema/wifiTuning',
+      'A codebase created to compete in a simulated robot game utilized YOLO, CNN\'s and Imitation learning',
+    language: ['Python', 'ROS'],
+    html_url: 'https://github.com/ELM-ERS/ENPH353_Comp',
+    homepage: 'https://github.com/ELM-ERS/ENPH353_Comp',
   },
   {
-    id: 1,
+    id: 2,
     name: 'Neovim configuration',
     description:
       'My custom configuration for Neovim tailered for developing in C, C++, Python and Rust',
@@ -19,6 +19,24 @@ const repositories = [
   },
   {
     id: 3,
+    name: 'Dotfiles',
+    description:
+    'My arch linux configuration using hyprland and quickshell',
+    language: ['qml', 'bash'],
+    html_url: 'https://codeberg.org/Yuvraj/dotfiles',
+    homepage: 'https://codeberg.org/Yuvraj/dotfiles',
+  },
+  {
+    id: 4,
+    name: 'ESP32 WifiTuner',
+    description:
+      'A custom made wifi tuner used to remotly tune your PID values for any control system alongside providing an error graph',
+    language: ['HTML', 'JS', 'C++', 'WiFi'],
+    html_url: 'https://github.com/Yuvrajscheema/wifiTuning',
+    homepage: 'https://github.com/Yuvrajscheema/wifiTuning',
+  },
+  {
+    id: 5,
     name: 'Markdown Notes',
     description:
       'My obsidian notes I have taken over my time in Engineering Physics',
@@ -26,15 +44,6 @@ const repositories = [
     html_url: 'https://github.com/Yuvrajscheema/notes',
     homepage: 'https://github.com/Yuvrajscheema/notes',
   },
-  {
-    id: 4,
-    name: 'Machine Learning Robot',
-    description:
-      'A codebase created to compete in a simulated robot game utilized YOLO, CNN\'s and Imitation learning',
-    language: ['Python', 'ROS'],
-    html_url: 'https://github.com/ELM-ERS/ENPH353_Comp',
-    homepage: 'https://github.com/ELM-ERS/ENPH353_Comp',
-  }
 
 ];
 

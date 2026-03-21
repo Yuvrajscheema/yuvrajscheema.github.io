@@ -65,7 +65,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     const timeout = setTimeout(() => {
       console.log('Fallback timeout triggered, hiding loader');
       setLoading(false);
-    }, 1000); // 1000ms to match 1s SCSS animation
+    }, 250); // 1000ms to match 1s SCSS animation
 
     // Listen for router events
     router.events.on('routeChangeStart', handleRouteChangeStart);

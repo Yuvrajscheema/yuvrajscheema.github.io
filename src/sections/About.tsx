@@ -17,61 +17,27 @@ const mobileText: AboutText = {
     `,
   experience:
     `
-    My hands-on experience includes working with FTC and FRC robots, where I served as the programming lead for two years and led my team to a BC provincial championship.
-    I've also contributed to professional research environments, including a position at UVic CFAR where I developed an emissions analyzer for the sustainable air fuel program.
-    At UOttawa, I implemented L1 adaptive control on a nanoquadrotor, and my work on the firmware,
-    control systems, and circuitry of a robot for the UBC Engineering Physics robot summer competition earned our team first place.
     `,
 };
 
-const desktopText: AboutText = {
-  intro:
-    `
-    Im an Engineering Physics student with a passion for Robotics, Control Systems and Embedded Systems. 
-    I enjoy designing robust, real-time systems for time-critical applications, 
-    with an emphasis on reliability, determinism, and performance under real-world constraints.
-    `,
-  experience:
-    `
-    My hands-on experience includes working with FTC and FRC robots, where I served as the programming lead for two years and led my team to a BC provincial championship.
-    I've also contributed to professional research environments, including a position at UVic CFAR where I developed an emissions analyzer for the sustainable air fuel program.
-    At UOttawa, I implemented L1 adaptive control on a nanoquadrotor, and my work on the firmware,
-    control systems, and circuitry of a robot for the UBC Engineering Physics robot summer competition earned our team first place.
-    `,
-};
+const desktopText = mobileText
 
-// Skill definitions with icons from Simple Icons CDN
-interface Skill {
-  name: string;
-  icon: string;
-}
+// const desktopText: AboutText = {
+//   intro:
+//     `
+//     Im an Engineering Physics student with a passion for Robotics, Control Systems and Embedded Systems. 
+//     I enjoy designing robust, real-time systems for time-critical applications, 
+//     with an emphasis on reliability, determinism, and performance under real-world constraints.
+//     `,
+//   experience:
+//     `
+//     My hands-on experience includes working with FTC and FRC robots, where I served as the programming lead for two years and led my team to a BC provincial championship.
+//     I've also contributed to professional research environments, including a position at UVic CFAR where I developed an emissions analyzer for the sustainable air fuel program.
+//     At UOttawa, I implemented L1 adaptive control on a nanoquadrotor, and my work on the firmware,
+//     control systems, and circuitry of a robot for the UBC Engineering Physics robot summer competition earned our team first place.
+//     `,
+// };
 
-const technologiesLine1: Skill[] = [
-  { name: 'C++', icon: 'https://cdn.simpleicons.org/gnu/white'},
-  { name: 'Python', icon: 'https://cdn.simpleicons.org/python/white' },
-  { name: 'Shell Scripting', icon: 'https://cdn.simpleicons.org/gnubash/white' },
-  { name: 'Java', icon:   'https://cdn.simpleicons.org/intellijidea/white'  },
-  { name: 'Rust', icon: 'https://cdn.simpleicons.org/rust/white'  },
-  { name: 'Tmux', icon: 'https://cdn.simpleicons.org/tmux/white'  },
-  { name: 'TensorFlow', icon: 'https://cdn.simpleicons.org/tensorflow/white' },
-];
-
-const technologiesLine2: Skill[] = [
-  { name: 'TensorFlow', icon: 'https://cdn.simpleicons.org/tensorflow/white' },
-  { name: 'ROS',  icon: 'https://cdn.simpleicons.org/ros/white' },
-  { name: 'SolidWorks', icon: 'https://cdn.simpleicons.org/dassaultsystemes/white' },
-  { name: 'KiCad', icon:  'https://cdn.simpleicons.org/kicad/white'  },
-  { name: 'Neovim', icon:  'https://cdn.simpleicons.org/neovim/white'  },
-  { name: 'MatLab', icon: 'https://cdn.simpleicons.org/monster/white' },
-  { name: 'STM32',  icon: 'https://cdn.simpleicons.org/stmicroelectronics/white' },
-  { name: 'ESP32',  icon: 'https://cdn.simpleicons.org/espressif/white' },
-
-];
-
-const variants = {
-  visible: { opacity: 1, y: -50 },
-  hidden: { opacity: 0, y: 0 },
-};
 
 function About() {
   const ref = useRef<HTMLDivElement>(null);
