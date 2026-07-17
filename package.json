@@ -12,15 +12,12 @@
     "deploy": "gh-pages -d out --dotfiles -b main"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "@google/generative-ai": "^0.24.1",
     "@types/node": "^20.17.11",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "framer-motion": "^10.18.0",
     "lucide-react": "^0.469.0",
     "next": "^14.2.29",
-    "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-animated-cursor": "^2.11.2",
     "react-dom": "18.2.0",

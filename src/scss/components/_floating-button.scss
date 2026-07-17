@@ -19,11 +19,11 @@
     background-color 0.2s ease;
   z-index: 99;
   border: none;
-  box-shadow: 0 4px 12px rgba(100, 255, 218, 0.25);
+  box-shadow: 0 4px 12px rgba(131, 192, 146, 0.25);
   outline: none;
   
   &:hover, &:focus {
-    background-color: rgba(100, 255, 218, 0.8);
+    background-color: rgba(131, 192, 146, 0.8);
     transform: translateY(0) scale(1.05);
   }
   
@@ -44,6 +44,6 @@
   }
   
   &:focus-visible {
-    box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.6), 0 4px 12px rgba(100, 255, 218, 0.25);
+    box-shadow: 0 0 0 3px rgba(131, 192, 146, 0.6), 0 4px 12px rgba(131, 192, 146, 0.25);
   }
 } 

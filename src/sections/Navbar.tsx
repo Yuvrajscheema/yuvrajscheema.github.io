@@ -4,42 +4,30 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Button from '../components/Button';
 
+const sectionLinks = [
+  { name: 'About', link: '/#about' },
+  { name: 'Experience', link: '/#experience' },
+  { name: 'Projects', link: '/#work' },
+];
+
 function Navbar() {
   const [navbarVisible, setNavbarVisible] = useState(false);
   const [responsiveNavVisible, setResponsiveNavVisible] = useState(false);
-  const sectionLinks = [
-    { name: 'About', link: '/#about' },
-    { name: 'Experience', link: '/#experience' },
-    { name: 'Projects', link: '/#work' },
-    // {
-    //   name: 'Contact',
-    //   link: '/#contact',
-    // },
-  ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      window.pageYOffset > 100 ? setNavbarVisible(true) : setNavbarVisible(false);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll); // Cleanup listener
+    const handleScroll = () => setNavbarVisible(window.scrollY > 100);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close the responsive menu when clicking anywhere outside it.
   useEffect(() => {
-    const links = document.querySelectorAll('.nav-items-list-item-link');
-    links.forEach((link) => {
-      link.addEventListener('click', () => setResponsiveNavVisible(false));
-    });
-    const nav = document.querySelector('.nav-items');
-    nav?.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-    const html = document.querySelector('html');
-    html?.addEventListener('click', (e) => {
-      setResponsiveNavVisible(false);
-    });
+    const closeMenu = () => setResponsiveNavVisible(false);
+    document.documentElement.addEventListener('click', closeMenu);
+    return () => document.documentElement.removeEventListener('click', closeMenu);
   }, []);
 
+  // Blur the page content while the responsive menu is open.
   useEffect(() => {
     const main = document.querySelector('main');
     if (responsiveNavVisible) {
@@ -61,7 +49,8 @@ function Navbar() {
             ease: 'easeInOut',
           }}
         >
-          <Link href="" aria-label="Homepage">
+          <Link href="/" aria-label="Homepage">
+            YC
           </Link>
         </motion.div>
         <motion.div
@@ -101,7 +90,8 @@ function Navbar() {
         </motion.div>
         <motion.div
           id="nav-menu"
-          className={`${responsiveNavVisible && 'nav-responsive'} nav-items`}
+          className={`${responsiveNavVisible ? 'nav-responsive' : ''} nav-items`}
+          onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 100 }}
@@ -127,6 +117,7 @@ function Navbar() {
                 <Link
                   href={link}
                   className="nav-items-list-item-link"
+                  onClick={() => setResponsiveNavVisible(false)}
                   aria-label={`Navigate to ${name}`}
                 >
                   {name}

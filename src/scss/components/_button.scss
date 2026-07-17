@@ -79,7 +79,7 @@
       background-color: transparent;
       color: var(--theme-color);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(100, 255, 218, 0.15);
+      box-shadow: 0 4px 12px rgba(131, 192, 146, 0.15);
     }
     
     &:active {
@@ -108,7 +108,7 @@
     border: 1px solid var(--theme-color);
     
     &:hover, &:focus {
-      background-color: rgba(100, 255, 218, 0.1);
+      background-color: rgba(131, 192, 146, 0.1);
       transform: translateY(-2px);
     }
     
@@ -123,7 +123,7 @@
     border: 1px solid transparent;
     
     &:hover, &:focus {
-      background-color: rgba(100, 255, 218, 0.05);
+      background-color: rgba(131, 192, 146, 0.05);
       transform: translateY(-2px);
     }
     

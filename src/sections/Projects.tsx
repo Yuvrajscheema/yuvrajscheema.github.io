@@ -1,79 +1,65 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink, Github, Star, Award } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Award, Github, Star } from 'lucide-react';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import Link from 'next/link';
+import { useState } from 'react';
 import Button3D from '@/components/Button3D';
+
+// Featured projects. `pagePath` is the internal write-up page under src/pages/
+// (e.g. '/untitled_spacecraft' → src/pages/untitled_spacecraft.tsx);
+// `github` is the repository link.
+const projectsData = [
+  {
+    image: '/projects/robot.webp',
+    projectName: 'Untitled Spacecraft',
+    projectDescription:
+      'A robot built from scratch over the span of six weeks to compete in the UBC ENPH robot summer composing of 15 Engineering Physics student teams to compete in a robot competition',
+    projectTech: ['KiCad', 'C++', 'Rust', 'Onshape', '3D printing'],
+    pagePath: '/untitled_spacecraft',
+    github: 'https://github.com/enphx/firmware',
+    featured: true,
+    timeframe: '2025',
+    accolades: 'Achieved first place in the annual UBC ENPH robot summer competition',
+  },
+  {
+    image: '/projects/cf2.webp',
+    projectName: 'Ardupilot Crazyflie',
+    projectDescription:
+      'A modification to the Crazyflie porting the Ardupilot flight stack utilizing a serial bridge between the flight controller and an ESP32 allowing a more stable flight and access to a large community of open source packages to be used for research',
+    projectTech: ['C', 'C++', 'Python', 'UART'],
+    pagePath: '/ardupilot_crazyflie',
+    github: 'https://github.com/Yuvrajscheema/crazyflie-arducopter-setup',
+    featured: true,
+    timeframe: '2025',
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 function Projects() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-
-  const projectsData = [
-    {
-      image: '/projects/robot.webp',
-      projectName: 'Untitled Spacecraft',
-      projectDescription:
-        'A robot built from scratch over the span of six weeks to compete in the UBC ENPH robot summer composing of 15 Engineering Physics student teams to compete in a robot competition',
-      projectTech: ['KiCad', 'C++', 'Rust', 'Onshape', '3D printing'],
-      projectExternalLinks: {
-        github: 'https://github.com/enphx/firmware',
-        externalLink: 'https://github.com/enphx/firmware',
-      },
-      featured: true,
-      timeframe: '2025',
-      accolades:
-        'Achieved first place in the anual UBC ENPH robot summer competition',
-    },
-    {
-      image: '/projects/cf2.webp',
-      projectName: 'Ardupilot Crazyflie',
-      projectDescription:
-        'A modification to the Crazyflie porting the Ardupilot flight stack utilizing a serial bridge between the flight controller and an ESP32 allowing a more stable flight and access to a large community of open source packages to be used for research',
-      projectTech: ['C', 'C++', 'Python', 'UART'],
-      projectExternalLinks: {
-        github: 'https://github.com/Yuvrajscheema/crazyflie-arducopter-setup',
-        externalLink: 'https://github.com/Yuvrajscheema/crazyflie-arducopter-setup/blob/main/guide_to_ardupilot_on_crazyflie.pdf'
-      },
-      featured: true,
-      timeframe: '2025',
-    },
-
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
 
   return (
-    <div
-      id="work"
-      className="projects"
-      style={{ paddingTop: '170px' }}
-      ref={containerRef}
-    >
+    <div id="work" className="projects" style={{ paddingTop: '170px' }}>
       <motion.div
         className="title"
         initial="hidden"
@@ -94,57 +80,41 @@ function Projects() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
-        style={{ opacity }}
       >
         {projectsData.map(
           (
             {
-              image = '/projects/default-project.webp',
+              image,
               projectDescription,
-              projectExternalLinks,
               projectName,
               projectTech,
+              pagePath,
+              github,
               featured,
               accolades,
             },
             index
           ) => {
-            const hasVideo = false;
-
             const isEven = index % 2 === 1;
 
             return (
               <motion.div
-                className={`project bg-gradient-to-tr from-purple-600/20 via-indigo-500/10 to-pink-500/20 p-[1px] rounded-xl transition-transform transform hover:scale-[1.02] duration-300 hover:shadow-2xl hover:shadow-indigo-500/30 ${hoveredProject === projectName ? 'is-hovered' : ''
-                  } ${isEven ? 'even-project' : 'odd-project'}`}
+                className={`project ${hoveredProject === projectName ? 'is-hovered' : ''} ${
+                  isEven ? 'even-project' : 'odd-project'
+                }`}
                 key={projectName}
                 variants={itemVariants}
                 onMouseEnter={() => setHoveredProject(projectName)}
                 onMouseLeave={() => setHoveredProject(null)}
-                whileHover={{
-                  boxShadow: '0 10px 30px -15px rgba(100, 255, 218, 0.2)',
-                  borderColor: 'rgba(100, 255, 218, 0.3)',
-                }}
               >
-                <div className="project-inner bg-[#0f0f0f] rounded-[inherit]">
-                  <div
-                    className={`project-image ${hasVideo ? 'has-video' : ''}`}
-                  >
+                <div className="project-inner">
+                  <div className="project-image">
                     <div className="project-image-overlay"></div>
-                    <div className="project-image-container">
-                      {hasVideo ? (
-                        <iframe
-                        ></iframe>
-                      ) : (
-                        <Image
-                          src={image}
-                          fill
-                          loading="lazy"
-                          alt={projectName}
-                          quality={100}
-                        />
-                      )}
-                    </div>
+                    <Link href={pagePath} aria-label={`Read about ${projectName}`}>
+                      <div className="project-image-container">
+                        <Image src={image} fill loading="lazy" alt={projectName} />
+                      </div>
+                    </Link>
                     {featured && (
                       <motion.div
                         className="featured-badge"
@@ -164,17 +134,12 @@ function Projects() {
                     transition={{ delay: 0.2 }}
                   >
                     <h3 className="project-info-title">
-                      <motion.span
-                        className="cursor-pointer"
-                        whileHover={{ color: 'var(--theme-color)' }}
-                      >
-                        {projectName}
-                      </motion.span>
+                      <Link href={pagePath}>{projectName}</Link>
                     </h3>
                     <motion.div
                       className="project-info-description"
                       whileHover={{
-                        boxShadow: '0 15px 30px -15px rgba(2,12,27,0.8)',
+                        boxShadow: '0 15px 30px -15px rgba(0, 0, 0, 0.8)',
                         y: -5,
                       }}
                       transition={{ duration: 0.3 }}
@@ -199,16 +164,16 @@ function Projects() {
                         </motion.li>
                       ))}
                     </ul>
-                    <div className="project-info-links mt-4">
+                    <div className="project-info-links">
                       <Button3D
                         text="View Project"
-                        link={projectExternalLinks.github}
+                        link={pagePath}
                         color="primary"
                         className="mr-3"
                       />
                       <Button3D
                         text="GitHub"
-                        link={projectExternalLinks.github}
+                        link={github}
                         color="secondary"
                         icon={<Github size={16} />}
                       />
@@ -225,4 +190,3 @@ function Projects() {
 }
 
 export default Projects;
-

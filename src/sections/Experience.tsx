@@ -34,7 +34,7 @@ function Experience() {
       url: 'https://www.uottawa.ca/faculty-engineering/department-mechanical-engineering',
       start: 'January 2025',
       end: 'May 2025',
-      color: '#bb86fc', // Primary color
+      color: '#a7c080', // Everforest green (primary)
       icon: 'O',
       shortDescription: [
         'Successfully implemented and tuned an L1 adaptive controller on a Crazyflie nanodrone, significantly enhancing its resilience and stability against external disturbances.',
@@ -49,7 +49,7 @@ function Experience() {
       url: 'https://ubcthunderbikes.com/index.html',
       start: 'September 2024',
       end: 'Present',
-      color: '#03dac6', // Secondary color
+      color: '#83c092', // Everforest aqua (secondary)
       icon: 'T',
       shortDescription: [
         'Designed and developed a new charging solution for an electric motorbike\'s 36-cell battery pack, improving user experience by eliminating the need for disassembly.',
@@ -65,7 +65,7 @@ function Experience() {
       url: 'https://www.uvic-cfar.com/',
       start: 'June 2023',
       end: 'October 2024',
-      color: '#cf6679', // Error color
+      color: '#e67e80', // Everforest red
       icon: 'V',
       shortDescription: [
         'Led a team of five researchers in the development of an emissions analyzer system for small jet engines (Corvid50), overseeing the project from concept to final presentation.',

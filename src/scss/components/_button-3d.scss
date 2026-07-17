@@ -18,7 +18,7 @@
     position: absolute;
     inset: 0;
     border-radius: 8px;
-    border: 1px solid rgba(100, 255, 218, 0.1);
+    border: 1px solid rgba(131, 192, 146, 0.1);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 0;
@@ -138,7 +138,7 @@
     }
     
     .btn-3d__border {
-      border-color: rgba(100, 255, 218, 0.3);
+      border-color: rgba(131, 192, 146, 0.3);
     }
   }
   
@@ -244,11 +244,11 @@
 @keyframes borderPulse {
   0%, 100% {
     opacity: 0.3;
-    box-shadow: 0 0 0 rgba(100, 255, 218, 0);
+    box-shadow: 0 0 0 rgba(131, 192, 146, 0);
   }
   50% {
     opacity: 1;
-    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+    box-shadow: 0 0 15px rgba(131, 192, 146, 0.3);
   }
 }
 

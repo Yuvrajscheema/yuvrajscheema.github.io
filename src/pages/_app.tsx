@@ -1,93 +1,30 @@
 import '@/scss/globals.css';
 import '@/scss/index.scss';
-import { AppProvider } from '@/utils/ThemeContext';
-import { AnimatePresence, motion } from 'framer-motion';
 import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import { Fira_Code, Raleway } from 'next/font/google';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 
-// Import the Mosaic Loader component (adjust path as needed)
-import MosaicLoader from '@/components/Loader';
-
-// Fonts
+// Fonts — Raleway is a variable font (all weights); Fira Code is only used for
+// small mono labels, so load just the weights the stylesheets reference.
 const raleway = Raleway({ subsets: ['latin'] });
-const firaCode = Fira_Code({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] });
+const firaCode = Fira_Code({ subsets: ['latin'], weight: ['400', '500'] });
 
-// Animated cursor (disabled on mobile)
+// Client-only; never pre-rendered, so it cannot cause hydration mismatches.
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), { ssr: false });
 
-// Mosaic Loader Wrapper
-const Loader = () => (
-  <div className="loader-wrapper">
-    <MosaicLoader size={80} color="#bb86fc" gap={4} />
-  </div>
-);
-
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
+  // Start as "mobile" so the custom cursor never flashes on touch devices;
+  // flips to desktop after the first client-side measurement.
+  const [isMobile, setIsMobile] = useState(true);
 
-  // Handle mount, window resizing, and router events
   useEffect(() => {
-    console.log('App mounted');
-    setMounted(true);
-
-    // Check if mobile
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
-
-    // Smooth scroll
-    document.documentElement.style.scrollBehavior = 'smooth';
-
-    // Handle loading state
-    const handleRouteChangeStart = () => {
-      console.log('Route change started:', router.asPath);
-      setLoading(true);
-    };
-    const handleRouteChangeComplete = () => {
-      console.log('Route change complete, isReady:', router.isReady);
-      if (router.isReady) {
-        setLoading(false);
-      }
-    };
-    const handleRouteChangeError = () => {
-      console.log('Route change error');
-      setLoading(false);
-    };
-
-    // Fallback timeout to ensure loader displays for ~1s
-    const timeout = setTimeout(() => {
-      console.log('Fallback timeout triggered, hiding loader');
-      setLoading(false);
-    }, 250); // 1000ms to match 1s SCSS animation
-
-    // Listen for router events
-    router.events.on('routeChangeStart', handleRouteChangeStart);
-    router.events.on('routeChangeComplete', handleRouteChangeComplete);
-    router.events.on('routeChangeError', handleRouteChangeError);
-
-    return () => {
-      clearTimeout(timeout);
-      window.removeEventListener('resize', checkMobile);
-      router.events.off('routeChangeStart', handleRouteChangeStart);
-      router.events.off('routeChangeComplete', handleRouteChangeComplete);
-      router.events.off('routeChangeError', handleRouteChangeError);
-    };
-  }, [router]);
-
-  // Log when Component mounts
-  useEffect(() => {
-    console.log('Page component mounted:', Component.displayName || Component.name || 'Unknown');
-  }, [Component]);
-
-  // Don’t render until mounted (avoids hydration mismatch)
-  if (!mounted) return null;
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <>
@@ -102,45 +39,30 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         }
       `}</style>
 
-      {loading ? (
-        <Loader />
-      ) : (
-        <AppProvider>
-          <AnimatePresence mode="sync">
-            <motion.div
-              key={router.route}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.1 }}
-            >
-              <Component {...pageProps} />
-            </motion.div>
-          </AnimatePresence>
+      <Component {...pageProps} />
 
-          {!isMobile && (
-            <AnimatedCursor
-              innerSize={8}
-              outerSize={35}
-              color="187, 134, 252"
-              outerAlpha={0.2}
-              innerScale={1}
-              outerScale={1.7}
-              trailingSpeed={5}
-              showSystemCursor={false}
-              outerStyle={{ mixBlendMode: 'difference' }}
-              clickables={[
-                'a',
-                'button',
-                'input',
-                '.link',
-                '.hover-this',
-                '.timeline-item',
-                '.md-btn',
-              ]}
-            />
-          )}
-        </AppProvider>
-      )}
+        {!isMobile && (
+          <AnimatedCursor
+            innerSize={8}
+            outerSize={35}
+            color="167, 192, 128"
+            outerAlpha={0.2}
+            innerScale={1}
+            outerScale={1.7}
+            trailingSpeed={5}
+            showSystemCursor={false}
+            outerStyle={{ mixBlendMode: 'difference' }}
+            clickables={[
+              'a',
+              'button',
+              'input',
+              '.link',
+              '.hover-this',
+              '.timeline-item',
+              '.md-btn',
+            ]}
+          />
+        )}
     </>
   );
 };

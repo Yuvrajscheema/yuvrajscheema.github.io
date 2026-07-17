@@ -128,7 +128,7 @@
             flex-shrink: 0;
             cursor: default;
             box-shadow: var(--elevation-1);
-            border: 1px solid rgba(187, 134, 252, 0.1);
+            border: 1px solid rgba(167, 192, 128, 0.1);
             backdrop-filter: blur(4px);
             display: flex;
             align-items: center;
@@ -154,11 +154,11 @@
               background: linear-gradient(
                 135deg, 
                 var(--light-navy) 0%, 
-                rgba(187, 134, 252, 0.2) 100%
+                rgba(167, 192, 128, 0.2) 100%
               );
               transform: translateY(-4px);
               box-shadow: var(--elevation-2);
-              border-color: rgba(187, 134, 252, 0.3);
+              border-color: rgba(167, 192, 128, 0.3);
               color: var(--theme-color);
               
               .tech-icon {

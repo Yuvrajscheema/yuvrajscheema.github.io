@@ -1,100 +1,20 @@
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useEffect, useRef, useState, useCallback } from 'react';
-import { isInViewport } from '@/utils/scrollAnimation';
 
-interface AboutText {
-  intro: string;
-  experience: string;
-}
-
-const mobileText: AboutText = {
-  intro:
-    `
-    Im an Engineering Physics student with a passion for Robotics, Control Systems and Embedded Systems. 
-    I enjoy designing robust, real-time systems for time-critical applications, 
+const aboutText = `
+    Im an Engineering Physics student with a passion for Robotics, Control Systems and Embedded Systems.
+    I enjoy designing robust, real-time systems for time-critical applications,
     with an emphasis on reliability, determinism, and performance under real-world constraints.
-    `,
-  experience:
-    `
-    `,
-};
-
-const desktopText = mobileText
-
-// const desktopText: AboutText = {
-//   intro:
-//     `
-//     Im an Engineering Physics student with a passion for Robotics, Control Systems and Embedded Systems. 
-//     I enjoy designing robust, real-time systems for time-critical applications, 
-//     with an emphasis on reliability, determinism, and performance under real-world constraints.
-//     `,
-//   experience:
-//     `
-//     My hands-on experience includes working with FTC and FRC robots, where I served as the programming lead for two years and led my team to a BC provincial championship.
-//     I've also contributed to professional research environments, including a position at UVic CFAR where I developed an emissions analyzer for the sustainable air fuel program.
-//     At UOttawa, I implemented L1 adaptive control on a nanoquadrotor, and my work on the firmware,
-//     control systems, and circuitry of a robot for the UBC Engineering Physics robot summer competition earned our team first place.
-//     `,
-// };
-
+`;
 
 function About() {
-  const ref = useRef<HTMLDivElement>(null);
-  const techSectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref);
-  const [isMobile, setIsMobile] = useState(false);
-  const [imageError, setImageError] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const controls = useAnimation();
-
-  const checkMobile = useCallback(() => {
-    setIsMobile(window.innerWidth <= 768);
-  }, []);
-
-  useEffect(() => {
-    // Initial check
-    checkMobile();
-
-    // Add resize listener
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, [checkMobile]);
-
-  useEffect(() => {
-    console.log('Element is in view: ', isInView);
-  }, [isInView]);
-
-  useEffect(() => {
-    // Check visibility for scroll animations
-    const handleScroll = () => {
-      const section = document.querySelector('.about');
-      if (section && isInViewport(section) && !isVisible) {
-        setIsVisible(true);
-        controls.start({ opacity: 1, y: 0 });
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Initial checks
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isVisible, controls]);
-
-  // Create a larger array for truly seamless scrolling
-
   return (
     <motion.div
-      className={`about fade-in-section ${isVisible ? 'is-visible' : ''} section-transition`}
+      className="about section-transition"
       id="about"
-      ref={ref}
       initial={{ opacity: 0, y: 20 }}
-      animate={controls}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6, ease: 'easeInOut' }}
     >
       <div className="title">
@@ -102,45 +22,21 @@ function About() {
       </div>
       <div className="about-grid">
         <div className="about-grid-info">
-          <p className="about-grid-info-text text-justify text-base md:text-lg leading-relaxed">
-            {isMobile ? mobileText.intro : desktopText.intro}
-          </p>
-          <p className="about-grid-info-text text-justify text-base md:text-lg leading-relaxed indent-4">
-            {isMobile ? mobileText.experience : desktopText.experience}
-          </p>
-
-          <div className="tech-section" ref={techSectionRef}>
-          </div>
+          <p className="about-grid-info-text text-justify">{aboutText}</p>
         </div>
 
         <div className="about-grid-photo">
           <div className="overlay"></div>
           <div className="overlay-border"></div>
           <div className="about-grid-photo-container">
-            {!imageError ? (
-              <Image
-                src="/etc/profilePicture.jpg"
-                alt="Yuvraj Cheema - Engineering Physics Student"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-                style={{ objectFit: 'cover' }}
-                className="rounded-lg"
-                aria-label="Profile picture of Yuvraj Cheema"
-                onError={() => setImageError(true)}
-              />
-            ) : (
-              <Image
-                src="/etc/profilePicture.jpg"
-                alt="Yuvraj Cheema - Engineering Physics Student"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-                style={{ objectFit: 'cover' }}
-                className="rounded-lg"
-                aria-label="Profile picture of Yuvraj Cheema"
-              />
-            )}
+            <Image
+              src="/etc/profilePicture.webp"
+              alt="Yuvraj Cheema - Engineering Physics Student"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+              style={{ objectFit: 'cover' }}
+            />
           </div>
         </div>
       </div>

@@ -32,7 +32,7 @@ const OtherProjects: React.FC = () => {
           hidden: { opacity: 0, y: 0 },
         }}
       >
-        <h2>Some Things I&apos;ve Built</h2>
+        <h2>Other Noteworthy Projects</h2>
       </motion.div>
       <div className="grid">
         {repositories.slice(0, 6).map((repo, index) => (

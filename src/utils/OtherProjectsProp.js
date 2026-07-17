@@ -1,6 +1,15 @@
 const repositories = [
   {
     id: 1,
+    name: 'Custom Sensorless FOC Driver',
+    description:
+      'Using embedded Rust, developed code for a sensorless field oriented control brushless motor for a racing drone',
+    language: ['Rust'],
+    html_url: 'https://codeberg.org/Yuvraj/rp_pi_esc_firmware',
+    homepage: 'https://codeberg.org/Yuvraj/rp_pi_esc_firmware',
+  },
+  {
+    id: 2,
     name: 'Machine Learning Robot',
     description:
       'A codebase created to compete in a simulated robot game utilized YOLO, CNN\'s and Imitation learning',
@@ -9,7 +18,7 @@ const repositories = [
     homepage: 'https://github.com/ELM-ERS/ENPH353_Comp',
   },
   {
-    id: 2,
+    id: 3,
     name: 'Neovim configuration',
     description:
       'My custom configuration for Neovim tailered for developing in C, C++, Python and Rust',
@@ -18,16 +27,16 @@ const repositories = [
     homepage: 'https://github.com/Yuvrajscheema/nvim',
   },
   {
-    id: 3,
+    id: 4,
     name: 'Dotfiles',
     description:
-    'My arch linux configuration using hyprland and quickshell',
+    'My minimalistic arch linux configuration using hyprland and quickshell',
     language: ['qml', 'bash'],
     html_url: 'https://codeberg.org/Yuvraj/dotfiles',
     homepage: 'https://codeberg.org/Yuvraj/dotfiles',
   },
   {
-    id: 4,
+    id: 5,
     name: 'ESP32 WifiTuner',
     description:
       'A custom made wifi tuner used to remotly tune your PID values for any control system alongside providing an error graph',
@@ -36,7 +45,7 @@ const repositories = [
     homepage: 'https://github.com/Yuvrajscheema/wifiTuning',
   },
   {
-    id: 5,
+    id: 6,
     name: 'Markdown Notes',
     description:
       'My obsidian notes I have taken over my time in Engineering Physics',
