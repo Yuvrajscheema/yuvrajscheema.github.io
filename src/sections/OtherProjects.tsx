@@ -35,7 +35,7 @@ const OtherProjects: React.FC = () => {
         <h2>Other Noteworthy Projects</h2>
       </motion.div>
       <div className="grid">
-        {repositories.slice(0, 6).map((repo, index) => (
+        {repositories.map((repo, index) => (
           <motion.div
             className="card"
             key={repo.id}
@@ -58,14 +58,16 @@ const OtherProjects: React.FC = () => {
               {repo.language.length > 3 && <span>+{repo.language.length - 3} more</span>}
             </div>
             <div className="links">
-              <a
-                href={repo.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub Link"
-              >
-                <Github />
-              </a>
+              {repo.html_url && (
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Repository Link"
+                >
+                  <Github />
+                </a>
+              )}
               {repo.homepage && (
                 <a
                   href={repo.homepage}

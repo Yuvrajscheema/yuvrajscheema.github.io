@@ -28,10 +28,10 @@ function Index() {
   return (
     <div className="app">
       <Head>
-        <title>Yuvraj&apos;s Portfolio</title>
+        <title>Yuvraj Cheema — Embedded Systems & Robotics</title>
         <meta
           name="description"
-          content="Yuvraj Cheema - Engineering Physics student specializing in control systems and embedded systems"
+          content="Yuvraj Cheema — Engineering Physics student at UBC building robots, drones, and embedded systems. Projects and experience in firmware, control systems, and PCB design."
         />
         <link rel="canonical" href="https://yuvrajscheema.github.io" />
 
@@ -49,16 +49,25 @@ function Index() {
               '@type': 'Person',
               name: 'Yuvraj Cheema',
               url: 'https://yuvrajscheema.github.io',
-              jobTitle: 'Control Systems and Embedded Systems Engineer',
-              worksFor: {
-                '@type': 'Organization',
-                name: 'Self-employed',
+              jobTitle: 'Engineering Physics Student',
+              affiliation: {
+                '@type': 'CollegeOrUniversity',
+                name: 'University of British Columbia',
               },
               sameAs: [
                 'https://linkedin.com/in/yuvrajscheema',
                 'https://github.com/yuvrajscheema',
               ],
-              knowsAbout: ['AWS', 'Docker', 'Cpp', 'Low level programming'],
+              knowsAbout: [
+                'Embedded Systems',
+                'Control Systems',
+                'Robotics',
+                'Firmware Development',
+                'PCB Design',
+                'C++',
+                'Rust',
+                'Python',
+              ],
             }),
           }}
         />

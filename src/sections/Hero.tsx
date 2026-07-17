@@ -34,7 +34,7 @@ const textVariants: Variants = {
 
 // Keywords for floating background
 const keywords = [
-  'Ardupilot', 'Clang', 'Java', 'KiCad', 'Matlab', 'OnShape', 'Python', 'Rust', 'Simulink', 'Solidworks',
+  'ArduPilot', 'C++', 'CAN bus', 'FreeRTOS', 'KiCad', 'MATLAB', 'Onshape', 'Python', 'Rust', 'STM32',
 ];
 
 // Floating keyword: random position/size are memoized so they are picked once
@@ -124,9 +124,10 @@ const Hero: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.4 }}
         >
-          I&apos;m an <span className="highlight">Engineering Physics Student</span> that loves working with
-          <span className="highlight">Control Systems </span>, <span className="highlight">Embedded Systems</span>
-          , and <span className="highlight"> Robotics</span>.
+          I&apos;m an <span className="highlight">Engineering Physics student</span> at UBC. I build{' '}
+          <span className="highlight">robots</span>, <span className="highlight">drones</span>, and the{' '}
+          <span className="highlight">embedded systems</span> that run them, working from the firmware and
+          control loops down to the circuit boards underneath.
         </motion.p>
         <motion.div
           className="hero-button"

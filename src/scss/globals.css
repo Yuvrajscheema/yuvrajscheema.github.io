@@ -142,10 +142,6 @@ button {
   transform-origin: bottom left;
 }
 
-.text-justify {
-  text-align: justify;
-}
-
 .hero-container {
   display: flex;
   justify-content: center;
