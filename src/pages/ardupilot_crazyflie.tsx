@@ -21,11 +21,11 @@ function ArdupilotCrazyflie() {
       <section>
         <h2>Overview</h2>
         <p>
-          The Crazyflie 2.1 is a palm-sized quadrotor found in research labs everywhere,
-          but its stock firmware keeps it walled off from the wider open-source autopilot
-          ecosystem. During my co-op at the University of Ottawa, I ported ArduPilot to
-          it — giving a widely used research platform access to a mature flight stack,
-          its tooling, and its community of packages.
+          The Crazyflie 2.1 is a palm-sized quadrotor used in research labs everywhere, but its
+          stock firmware keeps it walled off from the wider open-source autopilot ecosystem.
+          During my co-op at the University of Ottawa, I ported ArduPilot to it, giving a widely
+          used research platform a mature flight stack along with its tooling and its community
+          of packages.
         </p>
       </section>
 
@@ -33,16 +33,16 @@ function ArdupilotCrazyflie() {
         <h2>How It Works</h2>
         <ul>
           <li>
-            The ArduPilot firmware was ported and customized in C++ to run on the
+            I ported and customized the ArduPilot firmware in C++ to run on the
             Crazyflie&apos;s STM32 flight controller.
           </li>
           <li>
-            An ESP32 acts as a serial bridge over UART, carrying MAVLink wirelessly
+            I added an ESP32 as a serial bridge over UART, carrying MAVLink wirelessly
             between the drone and its ground station.
           </li>
           <li>
-            The full setup process is documented in a step-by-step guide (linked above)
-            so other researchers can reproduce it.
+            I documented the full setup in a step-by-step guide (linked above) so other
+            researchers can reproduce it.
           </li>
         </ul>
       </section>

@@ -124,9 +124,10 @@ const Hero: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.4 }}
         >
-          I&apos;m an <span className="highlight">Engineering Physics student</span> at UBC who builds{' '}
+          I&apos;m an <span className="highlight">Engineering Physics student</span> at UBC. I build{' '}
           <span className="highlight">robots</span>, <span className="highlight">drones</span>, and the{' '}
-          <span className="highlight">embedded systems</span> that bring them to life.
+          <span className="highlight">embedded systems</span> that run them, working from the firmware and
+          control loops down to the circuit boards underneath.
         </motion.p>
         <motion.div
           className="hero-button"

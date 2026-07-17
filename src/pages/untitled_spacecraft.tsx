@@ -23,20 +23,20 @@ function UntitledSpacecraft() {
       <section>
         <h2>Overview</h2>
         <p>
-          Every summer, UBC Engineering Physics runs ENPH 253 — better known as{' '}
-          <em>robot summer</em> — where teams design, machine, and program a fully
-          autonomous robot from scratch in six weeks. The 2025 challenge was fire rescue:
-          navigate a hazard-filled course, find the victims, and carry them to safety
-          faster than anyone else. Our robot, <em>Untitled Spacecraft</em>, took first
-          place out of 15 teams.
+          Every summer, UBC Engineering Physics runs ENPH 253, better known as{' '}
+          <em>robot summer</em>: teams get six weeks to design, machine, and program a fully
+          autonomous robot from scratch. The 2025 challenge was fire rescue, navigating a
+          hazard-filled course to find the victims and carry them to safety faster than any
+          other team. Our robot, <em>Untitled Spacecraft</em>, won first place out of 15 teams.
         </p>
       </section>
 
       <section>
         <h2>My Role</h2>
         <p>
-          I led embedded development for the team, covering the MCU firmware, sensor
-          interfaces, and actuator control. Highlights include:
+          I led embedded development for the team, writing the MCU firmware and the drivers
+          behind the sensor interfaces and actuator control. A few of the pieces I'm most
+          proud of:
         </p>
         <ul>
           <li>
