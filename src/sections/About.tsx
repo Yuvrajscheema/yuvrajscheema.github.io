@@ -31,7 +31,7 @@ function About() {
       <div className="about-grid">
         <div className="about-grid-info">
           {aboutParagraphs.map((paragraph) => (
-            <p className="about-grid-info-text text-justify" key={paragraph.slice(0, 24)}>
+            <p className="about-grid-info-text" key={paragraph.slice(0, 24)}>
               {paragraph}
             </p>
           ))}
