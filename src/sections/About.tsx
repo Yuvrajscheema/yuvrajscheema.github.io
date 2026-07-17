@@ -2,16 +2,17 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const aboutParagraphs = [
-  `I'm an Engineering Physics student at UBC (Class of 2028) who likes building things that
-    move. My favourite place to work is the boundary between hardware and software — writing
-    firmware, tuning control loops, and designing the circuit boards they run on. Right now
-    that means reverse-engineering radar protocols and laying out rigid-flex PCBs as an
-    embedded systems co-op at Reach Technologies.`,
-  `Outside of work, you'll usually find me building a drone completely from scratch — custom
-    motor controller, sensorless field-oriented control written in Rust, and all — developing
-    dashboard firmware for UBC Thunderbikes' electric motorcycle, or tinkering with my Arch
-    Linux and Neovim setup. Whatever the project, the theme is the same: real-time systems
-    that stay reliable, deterministic, and fast under real-world constraints.`,
+  `I'm an Engineering Physics student at UBC (Class of 2028), and I've been hooked on building
+    things that move for about as long as I can remember. The work I love most lives right at the
+    seam between hardware and software — writing the firmware, tuning the control loops, and laying
+    out the circuit boards it all runs on. These days that looks like reverse-engineering marine
+    radar protocols and squeezing rigid-flex PCBs into centimetre-scale footprints as an embedded
+    systems co-op at Reach Technologies.`,
+  `When I'm off the clock, I'm usually buried in a project of my own: building a racing drone from
+    absolute scratch — custom motor controller, sensorless field-oriented control written in Rust,
+    the works — writing dashboard firmware for UBC Thunderbikes' electric motorcycle, or endlessly
+    refining my Arch Linux and Neovim setup. Different projects, same obsession: real-time systems
+    that stay reliable, deterministic, and fast when the real world pushes back.`,
 ];
 
 function About() {
