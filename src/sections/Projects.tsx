@@ -13,19 +13,19 @@ const projectsData = [
     image: '/projects/robot.webp',
     projectName: 'Untitled Spacecraft',
     projectDescription:
-      'A robot built from scratch over the span of six weeks to compete in the UBC ENPH robot summer composing of 15 Engineering Physics student teams to compete in a robot competition',
+      'An autonomous fire-rescue robot designed and built from scratch in six weeks for UBC Engineering Physics\' annual "robot summer" competition, where it took first place against 15 teams.',
     projectTech: ['KiCad', 'C++', 'Rust', 'Onshape', '3D printing'],
     pagePath: '/untitled_spacecraft',
     github: 'https://github.com/enphx/firmware',
     featured: true,
     timeframe: '2025',
-    accolades: 'Achieved first place in the annual UBC ENPH robot summer competition',
+    accolades: 'First place in the annual UBC ENPH robot summer competition',
   },
   {
     image: '/projects/cf2.webp',
-    projectName: 'Ardupilot Crazyflie',
+    projectName: 'ArduPilot Crazyflie',
     projectDescription:
-      'A modification to the Crazyflie porting the Ardupilot flight stack utilizing a serial bridge between the flight controller and an ESP32 allowing a more stable flight and access to a large community of open source packages to be used for research',
+      'A port of the ArduPilot flight stack to the Crazyflie 2.1 nano-drone, using an ESP32 serial bridge for wireless MAVLink. It brings a stable, open-source flight stack — and its huge ecosystem of research tooling — to palm-sized hardware.',
     projectTech: ['C', 'C++', 'Python', 'UART'],
     pagePath: '/ardupilot_crazyflie',
     github: 'https://github.com/Yuvrajscheema/crazyflie-arducopter-setup',

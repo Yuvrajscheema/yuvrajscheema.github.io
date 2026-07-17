@@ -29,34 +29,48 @@ function Experience() {
 
   const experiences = [
     {
+      name: 'Reach Technologies',
+      role: 'Embedded Systems Engineering Co-op',
+      url: 'https://www.reachtest.com/',
+      start: 'May 2026',
+      end: 'Present',
+      color: '#dbbc7f', // Everforest yellow
+      icon: 'R',
+      shortDescription: [
+        'Reverse-engineered the network protocol of a Lowrance marine radar, enabling raw data capture over UDP without the OEM chartplotter.',
+        'Built a C# async/await client that ingests over 4 Mbps of radar data via multicast and records it in the IRIG 106 Chapter 10 format.',
+        'Developed a live and playback radar display processor with size normalization, markers, and a lead line, plus command and control over a separate multicast channel — the radar can be operated entirely from a laptop.',
+        'Designed a rigid-flex IMU PCB (4-layer rigid, 2-layer flex) packing an IMU, an LTC4332 transceiver, and supporting passives into a 2 cm × 1 cm footprint with impedance-matched differential pairs.',
+      ],
+    },
+    {
       name: 'UOttawa Mechanical Engineering',
-      role: 'Controls Engineer Reasearch Co-op',
+      role: 'Control Systems Engineer Co-op',
       url: 'https://www.uottawa.ca/faculty-engineering/department-mechanical-engineering',
       start: 'January 2025',
       end: 'May 2025',
       color: '#a7c080', // Everforest green (primary)
       icon: 'O',
       shortDescription: [
-        'Successfully implemented and tuned an L1 adaptive controller on a Crazyflie nanodrone, significantly enhancing its resilience and stability against external disturbances.',
-        'Worked alongside a PhD student to develop novel reinforcement learning models for drone swarms, with the goal of optimizing performance for satellite reflection panels.',
-        'Provided an excellent platform by porting and adapting the ArduPilot firmware to the Crazyflie, enabling the use of a robust, open-source flight stack on a widely-used research and educational quadrotor',
-        'Integrated an ESP32 as a serial bridge to enable wireless MAVLINK communication for seamless drone-to-ground station connectivity.',
+        'Implemented and tuned an L1 adaptive controller on a Crazyflie nano-drone, significantly improving its resilience and stability against external disturbances.',
+        'Worked alongside a PhD student to develop novel reinforcement learning models for satellite-tracking drone swarms.',
+        'Ported and adapted the ArduPilot firmware to the Crazyflie 2.1 in C++, bringing a robust, open-source flight stack to a widely used research and educational quadrotor.',
+        'Integrated an ESP32 as a serial bridge over UART, enabling wireless MAVLink communication between the drone and its ground station.',
       ],
     },
     {
       name: 'UBC Thunderbikes',
-      role: 'Battery Engineer',
+      role: 'Firmware Engineer',
       url: 'https://ubcthunderbikes.com/index.html',
       start: 'September 2024',
       end: 'Present',
       color: '#83c092', // Everforest aqua (secondary)
       icon: 'T',
       shortDescription: [
-        'Designed and developed a new charging solution for an electric motorbike\'s 36-cell battery pack, improving user experience by eliminating the need for disassembly.',
-        'Assembled and tested a Battery Management System (BMS) for a 100V motorcycle battery pack, ensuring safe and optimal performance.',
-        'Conducted thermal analysis using MATLAB on high-voltage battery packs to validate safety parameters and ensure the motorcycle\'s, power system operates reliably under all conditions.',
-        'Contributed to design reviews for key motorbike subsystems, including battery cooling, control systems, frame, and custom electronic designs'
-
+        'Streamed LVGL frames directly to display memory over LTDC DMA for the bike\'s dashboard, cutting CPU usage from 40% to 12%, while ensuring DMA-cache coherency on the STM32 to keep display data intact.',
+        'Integrated a CAN bus network carrying status messages between the dashboard, VCU, BMS, and charger.',
+        'Assembled and tested a Battery Management System for a 100V motorcycle battery, with cell-level monitoring across 24 series cells.',
+        'Designed a charging solution that removed the need to disassemble the bike, and contributed to design reviews spanning battery cooling, control systems, and custom electronics.',
       ],
     },
     {
@@ -68,11 +82,10 @@ function Experience() {
       color: '#e67e80', // Everforest red
       icon: 'V',
       shortDescription: [
-        'Led a team of five researchers in the development of an emissions analyzer system for small jet engines (Corvid50), overseeing the project from concept to final presentation.',
-        'Designed a reliable prototype based on extensive literature review and an iterative, data-driven design methodology.',
-        'Utilized Excel and MATLAB for data analysis, performing stoichiometric and gas flow calculations to validate engine test results and ensure design accuracy.',
-        'Presented final designs and project outcomes to a group of three senior engineers, effectively communicating technical results.',
-
+        'Led a team of five researchers developing an emissions analyzer system for small jet engines, overseeing the project from concept to final presentation.',
+        'Designed a reliable prototype grounded in an extensive literature review and an iterative, data-driven design methodology.',
+        'Performed stoichiometric and gas flow calculations in Excel and MATLAB to validate engine test results and confirm design accuracy.',
+        'Presented final designs and project outcomes to a panel of three senior engineers.',
       ],
     },
   ];

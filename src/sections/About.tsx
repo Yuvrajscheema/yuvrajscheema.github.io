@@ -1,11 +1,18 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-const aboutText = `
-    Im an Engineering Physics student with a passion for Robotics, Control Systems and Embedded Systems.
-    I enjoy designing robust, real-time systems for time-critical applications,
-    with an emphasis on reliability, determinism, and performance under real-world constraints.
-`;
+const aboutParagraphs = [
+  `I'm an Engineering Physics student at UBC (Class of 2028) who likes building things that
+    move. My favourite place to work is the boundary between hardware and software — writing
+    firmware, tuning control loops, and designing the circuit boards they run on. Right now
+    that means reverse-engineering radar protocols and laying out rigid-flex PCBs as an
+    embedded systems co-op at Reach Technologies.`,
+  `Outside of work, you'll usually find me building a drone completely from scratch — custom
+    motor controller, sensorless field-oriented control written in Rust, and all — developing
+    dashboard firmware for UBC Thunderbikes' electric motorcycle, or tinkering with my Arch
+    Linux and Neovim setup. Whatever the project, the theme is the same: real-time systems
+    that stay reliable, deterministic, and fast under real-world constraints.`,
+];
 
 function About() {
   return (
@@ -22,7 +29,11 @@ function About() {
       </div>
       <div className="about-grid">
         <div className="about-grid-info">
-          <p className="about-grid-info-text text-justify">{aboutText}</p>
+          {aboutParagraphs.map((paragraph) => (
+            <p className="about-grid-info-text text-justify" key={paragraph.slice(0, 24)}>
+              {paragraph}
+            </p>
+          ))}
         </div>
 
         <div className="about-grid-photo">
