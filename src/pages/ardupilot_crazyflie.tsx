@@ -21,12 +21,11 @@ function ArdupilotCrazyflie() {
       <section>
         <h2>Overview</h2>
         <p>
-          The Crazyflie 2.1 is a palm-sized quadrotor you'll find in research labs everywhere —
+          The Crazyflie 2.1 is a palm-sized quadrotor found in research labs everywhere,
           but its stock firmware keeps it walled off from the wider open-source autopilot
-          ecosystem. During my co-op at the University of Ottawa, I set out to tear down that
-          wall, porting ArduPilot onto the Crazyflie so a widely used research platform could
-          finally tap into a mature flight stack, its tooling, and its whole community of
-          packages.
+          ecosystem. During my co-op at the University of Ottawa, I ported ArduPilot to
+          it — giving a widely used research platform access to a mature flight stack,
+          its tooling, and its community of packages.
         </p>
       </section>
 
