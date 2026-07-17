@@ -53,6 +53,18 @@ function UntitledSpacecraft() {
           </li>
         </ul>
       </section>
+
+      <section>
+        <h2>The Night Before Competition</h2>
+        <p>
+          The night before competition, the robot started behaving erratically, and I traced
+          it to a memory corruption bug: PWM calls to specific pins were interfering with flash
+          memory. I found the root cause through backtraces, then physically cut and rewired the
+          PCB traces to fix it. We won first place the next day. Building a complete system under
+          pressure and debugging it down to the hardware level is exactly the work I want to keep
+          doing.
+        </p>
+      </section>
     </ProjectLayout>
   );
 }
