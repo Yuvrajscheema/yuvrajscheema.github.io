@@ -209,7 +209,20 @@ function UntitledSpacecraft() {
           itself inside its own interrupt, which gave the arm smooth motion. A LiDAR
           rangefinder for pet detection communicated over I2C, and since we were running
           low on pins, a shift register handled on/off signals like motor direction bits.
+          The diagram below shows how all the hardware connected to the ESP32.
         </p>
+        <figure className="figure-narrow">
+          <Image
+            src="/projects/robot/io.webp"
+            alt="Block diagram of the ESP32 IO: I2C to the LiDAR, a shift register providing motor direction bits, a hardware timer and PWM driving the stepper, servos, and DC motors, ADCs reading the IR sensors and potentiometers, and encoders and limit switches feeding back in"
+            width={512}
+            height={364}
+          />
+          <figcaption>
+            The IO of the ESP32: timers and PWM out to the actuators, ADCs in from the
+            analog sensors.
+          </figcaption>
+        </figure>
         <p>
           For tuning, our professor recommended potentiometers. I thought this was insane;
           it lacked the precision and data collection I wanted. So on the ferry I wrote{' '}
