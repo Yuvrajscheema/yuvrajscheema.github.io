@@ -60,8 +60,9 @@ function UntitledSpacecraft() {
           >
             Ari
           </a>
-          . Taiga and Ari carried the mechanical design and Ronny designed our PCBs, while I
-          focused on the firmware and control systems.
+          . Taiga and Ari carried the mechanical design, and Ronny designed our PCBs and
+          also worked on the software and firmware. I focused on the firmware and control
+          systems.
         </p>
         <figure className="figure-narrow">
           <Image
