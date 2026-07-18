@@ -48,6 +48,11 @@ public/                         Files copied to the site root verbatim.
   robots.txt / sitemap.xml      SEO. Add new pages to sitemap.xml.
   etc/profilePicture.webp       About-section portrait (37 KB).
   projects/*.webp               Featured-project card images (< 200 KB each).
+  projects/robot/*.webp         Figures for the Untitled Spacecraft write-up (< 200 KB each).
+  models/*.glb                  Draco-compressed 3D models for the CAD viewer (Recipe 7.8).
+  draco/                        Self-hosted Draco decoder used by the CAD viewer. Copied from
+                                node_modules/three/examples/jsm/libs/draco/gltf/ — re-copy only
+                                if the three.js version (via @google/model-viewer) changes.
 src/pages/                      One file = one page (Next.js Pages Router).
   _app.tsx                      Wraps every page: global styles, fonts, desktop-only animated cursor.
   _document.tsx                 HTML shell: <html lang>, theme-color meta, manifest link.
@@ -66,10 +71,13 @@ src/components/                 Reusable pieces:
   Button.tsx                    Standard link-button (variants: primary/secondary/outline/ghost).
   Button3D.tsx                  Fancier button used on featured project cards.
   ProjectLayout.tsx             Shared layout for project write-up pages (header, image, typography).
+  CadViewer.tsx                 Click-to-load interactive 3D model viewer (Recipe 7.8).
   Email.tsx / SocialIcons.tsx   Fixed side widgets (email address, GitHub/LinkedIn icons).
   FloatingButton.tsx            Scroll-to-top arrow.
 src/utils/
   OtherProjectsProp.js          Data array for the small project grid.
+src/types/
+  model-viewer.d.ts             JSX typing for the <model-viewer> element used by CadViewer.
 src/scss/                       ALL styling. One partial per section/component.
   globals.css                   THEME: every color as a CSS variable (§6). Global element styles.
   _variables.scss               Font-size variables (--tsm ... --tgiant).
@@ -258,10 +266,51 @@ Put the most recent role **first** — index 0 is the tab selected on load.
 2. Check the size: `ls -la public/projects/` — if any image is over ~200 KB, compress harder (lower `-q` or smaller `-resize`).
 3. Reference it by absolute path from the site root: `/projects/my-project.webp` (never `../public/...`).
 
-### 7.8 Change a theme color
+### 7.8 Add an interactive 3D CAD model to a page
+
+The Untitled Spacecraft page shows a spinnable CAD model via `src/components/CadViewer.tsx`. The viewer is **click-to-load**: the page ships zero extra JS until the visitor presses "Load interactive 3D model", which dynamically imports `@google/model-viewer` (its own chunk) and streams the model. To add one to another page:
+
+1. **Convert the CAD file (STEP) to GLB** — one-off, the source CAD file is *not* committed:
+   ```bash
+   pip install cascadio
+   python3 -c "import cascadio; cascadio.step_to_glb('robot.step', 'raw.glb', tol_linear=0.25, tol_angular=0.5)"
+   ```
+2. **Compress with Draco** (35 MB STEP → 8 MB GLB → ~1 MB in the robot's case):
+   ```bash
+   npx @gltf-transform/cli optimize raw.glb public/models/my-model.glb --compress draco --join false --flatten false
+   ```
+   Keep `--join false`: CAD assemblies reuse geometry (screws etc.) via GPU instancing, and joining *inflates* the file.
+3. **Use it in a page:**
+   ```tsx
+   <CadViewer
+     src="/models/my-model.glb"
+     alt="What the model shows"
+     downloadSize="~1 MB"
+     orientation="0deg -90deg 0deg"   // CAD exports are usually Z-up; glTF is Y-up.
+   />                                  // Remove if the model already sits upright.
+   ```
+4. **Decoder:** `public/draco/` is the self-hosted Draco decoder CadViewer points model-viewer at — already in place, nothing to do.
+
+⚠️ Never import `@google/model-viewer` at the top of a module — it must stay inside CadViewer's click handler or it lands in the page bundle.
+
+### 7.9 Change a theme color
 
 - One accent everywhere: change the variable's value in `src/scss/globals.css` (§6 table tells you which variable does what).
 - Whole palette: follow the "To change the whole site's palette" steps at the end of §6.
+
+### 7.10 Add figures (images with captions) to a project page
+
+Inside a `<section>` of a project page, use a `<figure>` — styles come from `_project-page.scss`:
+
+```tsx
+<figure>                {/* full-width image */}
+<figure className="figure-narrow">   {/* small diagram shown at natural size, centered */}
+  <Image src="/projects/robot/pd.webp" alt="..." width={512} height={246} />
+  <figcaption>Caption in mono, centered.</figcaption>
+</figure>
+```
+
+Two figures side-by-side on desktop: wrap them in `<div className="figure-grid">`. Diagrams exported with a transparent background (e.g. Excalidraw dark mode) look best — they sit directly on the page background.
 
 ## 8. Verifying changes (do this before committing)
 
@@ -300,7 +349,15 @@ Then commit to `master`. To publish: `npm run deploy`.
 - A `.section-loader` CSS spinner appears briefly while below-the-fold JS chunks load on slow connections — that's expected.
 - `next.config.js` intentionally contains almost nothing — see Hard Rule 1 before adding options.
 
-## 11. Changelog — July 2026 cleanup
+## 11. Changelog
+
+### July 18, 2026 — Untitled Spacecraft expansion
+
+- Rewrote `/untitled_spacecraft/` with the full robot-summer write-up: overview + course map, mechanical/electrical/firmware/controls sections, and war stories. Six figures added under `public/projects/robot/`.
+- Added the click-to-load interactive CAD viewer (`CadViewer.tsx` + `_cad-viewer.scss` + `src/types/model-viewer.d.ts`, Recipe 7.8). New dependency: `@google/model-viewer` (lazy chunk only). Model at `public/models/robot.glb` (1 MB, Draco), decoder self-hosted at `public/draco/`.
+- Added `figure` / `.figure-narrow` / `.figure-grid` styles to `_project-page.scss` (Recipe 7.10).
+
+### July 2026 cleanup
 
 Fixed in this pass (details in git history):
 
