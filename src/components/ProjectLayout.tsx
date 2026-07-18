@@ -45,7 +45,7 @@ const ProjectLayout: FC<ProjectLayoutProps> = ({
   return (
     <div className="project-page">
       <Head>
-        <title>{`${title} — Yuvraj Cheema`}</title>
+        <title>{`${title} | Yuvraj Cheema`}</title>
         <meta name="description" content={description} />
       </Head>
 

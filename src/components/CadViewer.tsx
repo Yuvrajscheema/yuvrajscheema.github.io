@@ -53,7 +53,7 @@ const CadViewer: FC<CadViewerProps> = ({ src, alt, downloadSize, orientation }) 
           shadow-intensity="1"
           interaction-prompt="none"
         />
-        <p className="cad-viewer-hint">Drag to orbit — scroll to zoom — two-finger drag to pan</p>
+        <p className="cad-viewer-hint">Drag to orbit, scroll to zoom, two-finger drag to pan</p>
       </div>
     );
   }
@@ -69,7 +69,7 @@ const CadViewer: FC<CadViewerProps> = ({ src, alt, downloadSize, orientation }) 
         <Rotate3d size={42} aria-hidden="true" />
         <span>
           {status === 'loading' && 'Loading model…'}
-          {status === 'error' && 'Failed to load — click to retry'}
+          {status === 'error' && 'Failed to load, click to retry'}
           {status === 'idle' &&
             `Load interactive 3D model${downloadSize ? ` (${downloadSize})` : ''}`}
         </span>

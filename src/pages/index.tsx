@@ -28,7 +28,7 @@ function Index() {
   return (
     <div className="app">
       <Head>
-        <title>Yuvraj Cheema — Embedded Systems & Robotics</title>
+        <title>Yuvraj Cheema | Embedded Systems & Robotics</title>
         <meta
           name="description"
           content="Yuvraj Cheema — Engineering Physics student at UBC building robots, drones, and embedded systems. Projects and experience in firmware, control systems, and PCB design."
