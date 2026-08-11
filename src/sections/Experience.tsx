@@ -33,7 +33,7 @@ function Experience() {
       role: 'Embedded Systems Engineering Co-op',
       url: 'https://www.reachtest.com/',
       start: 'May 2026',
-      end: 'Present',
+      end: 'December 2026',
       color: '#dbbc7f', // Everforest yellow
       icon: 'R',
       shortDescription: [
@@ -41,6 +41,10 @@ function Experience() {
         'Built a C# async/await client that ingests over 4 Mbps of radar data via multicast and records it in the IRIG 106 Chapter 10 format.',
         'Developed a live and playback radar display processor with size normalization, markers, and a lead line, plus command and control over a separate multicast channel — the radar can be operated entirely from a laptop.',
         'Designed a rigid-flex IMU PCB (4-layer rigid, 2-layer flex) packing an IMU, an LTC4332 transceiver, and supporting passives into a 2 cm × 1 cm footprint with impedance-matched differential pairs.',
+        'Updated the VHDL on a Xilinx Kria SoM to support a new IMU board, accounting for an added SPI word delay and a revised clock rate, and reworked the testbench to validate the new timing.',
+        'Ported the Yocto C++ sensor layer to the new IMU part, and containerized the whole Yocto build in Docker so the rest of the team could skip a notoriously painful manual setup.',
+        'Brought up the new IMU boards on an oscilloscope: the MISO lines were dead because unconstrained FPGA pins were holding SS2 and SS3 low. Cutting those pins brought every board to life.',
+        'Wrote a real-time 3D orientation viewer in Odin with OpenGL, modelling the product as three coupled rotating assemblies lit with surface normals, launched from the existing C# application and fed live IMU attitude over UDP.',
       ],
     },
     {

@@ -2,11 +2,12 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const aboutParagraphs = [
-  `I'm an Engineering Physics student at UBC (Class of 2028). The work I've found most rewarding
+  `I'm an Engineering Physics student at UBC (Class of 2029). The work I've found most rewarding
     has always been the projects where I had to build the whole system myself, from the firmware
     and the control loops up to the circuit boards they run on. Right now that means
-    reverse-engineering marine radar protocols and laying out rigid-flex PCBs as an embedded
-    systems co-op at Reach Technologies.`,
+    reverse-engineering marine radar protocols, laying out rigid-flex PCBs, and bringing up sensor
+    boards from the VHDL down to the oscilloscope as an embedded systems co-op at Reach
+    Technologies.`,
   `Outside of work, I'm building a racing drone from scratch: a custom three-phase ESC running
     sensorless field-oriented control, written in Rust on an ARM Cortex-M33. I chose Rust because
     I wanted to deepen my low-level systems programming with a language that enforces safe memory

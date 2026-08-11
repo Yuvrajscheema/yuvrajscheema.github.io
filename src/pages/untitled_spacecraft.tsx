@@ -187,9 +187,9 @@ function UntitledSpacecraft() {
         <h2>Firmware</h2>
         <p>
           The firmware ran FreeRTOS tasks on the ESP32 through PlatformIO, but very early
-          on we hit an issue. We wanted to run the ADCs in continuous mode with DMA for
-          much faster sampling than the standard polled approach, which needed ESP-IDF 5,
-          and PlatformIO only shipped ESP-IDF 3. We were on PlatformIO in the first place
+          on we hit an issue. We wanted to run the ADCs in continuous mode with DMA to sample
+          at 2 MHz rather than the roughly 20 kHz a polled approach gives you, and that needed
+          ESP-IDF 5 while PlatformIO only shipped ESP-IDF 3. We were on PlatformIO in the first place
           because six weeks is not much time and we wanted Arduino libraries for faster
           iteration. The solution was{' '}
           <a
