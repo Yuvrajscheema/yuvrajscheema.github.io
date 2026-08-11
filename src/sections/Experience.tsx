@@ -52,7 +52,7 @@ function Experience() {
       role: 'Control Systems Engineer Co-op',
       url: 'https://www.uottawa.ca/faculty-engineering/department-mechanical-engineering',
       start: 'January 2025',
-      end: 'May 2025',
+      end: 'April 2025',
       color: '#a7c080', // Everforest green (primary)
       icon: 'O',
       shortDescription: [
@@ -81,7 +81,7 @@ function Experience() {
       name: 'UVic CFAR',
       role: 'Intern',
       url: 'https://www.uvic-cfar.com/',
-      start: 'June 2023',
+      start: 'June 2024',
       end: 'October 2024',
       color: '#e67e80', // Everforest red
       icon: 'V',
